@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <link rel="import" href="new-element.html" id="new-element">
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'import';
+        link.href = 'new-element.html';
+        link.id = 'new-element';
+        document.head.appendChild(link);
+    </script>
+</head>
+<body>
+<script>
+    var link = document.createElement('link');
+    link.rel = 'import';
+    link.href = 'new-element.html';
+    link.id = 'new-element';
+    document.head.appendChild(link);
+</script>
+    <new-element></new-element>
+</body>

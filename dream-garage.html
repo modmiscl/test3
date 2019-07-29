@@ -1,0 +1,26 @@
+<template>
+    <a href="#" id="view-disclaimer">Disclaimer</a>
+    <ul>
+        <li>Nissan</li>
+        <li>Lamborghini</li>
+        <li>Audi</li>
+    </ul>
+</template>
+<script>
+    (function(){
+        var Proto = Object.create(HTMLElement.prototype);
+        var importDoc = document.currentScript.ownerDocument;
+        Proto.createCallback = function() {
+            var template = importDoc.querySelector('template');
+            var templateClone = document.importNode(template.content, true);
+            var disclaimer = templateClone.querySelector('#view-disclaimer');
+            disclaimer.addEventListener('click', function() {
+                alert('I can only get one.');
+            });
+            var root = this.createShadowRoot();
+            root.appendChild(templateClone);
+        };
+        document.registerElement('dream-garage', {
+            prototype: Proto
+        })();
+</script>

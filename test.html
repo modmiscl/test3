@@ -1,0 +1,22 @@
+<template id="test">
+<ul>
+    <li>Test1</li>
+    <li>Test2</li>
+    <li>Test3</li>
+</ul>
+</template>
+
+<script>
+(function () {
+var Proto = Object.create(HTMLElement.prototype);
+var importDoc = document.currentScript.ownerDocument;
+Proto.createCallback = function () {
+    var template = importDoc.querySelector('#test');
+    var templateClone = document.importNode(template.content, true);
+    var root = this.createShadowRoot();
+    root.appendChild(templateClone);
+};
+document.registerElement('new-element', {
+    prototype: Proto
+})();
+</script>
